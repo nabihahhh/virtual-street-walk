@@ -1,0 +1,78 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Street Walk</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+
+  <link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body>
+
+<div class="videoContainer">
+
+  <div class="video-background">
+    <div class="video-foreground">
+    <iframe id="ytVideo" class="videoContainer__video" width="100%" height="100%" 
+      src="https://www.youtube.com/embed/2f8Q70JZM9w?modestbranding=1&autoplay=1&autohide=1&controls=0&fs=0&loop=1&rel=0&showinfo=0&disablekb=1&start=33"
+      frameBorder="0"
+      allowfullscreen="allowfullscreen"
+      mozallowfullscreen="mozallowfullscreen" 
+      msallowfullscreen="msallowfullscreen" 
+      oallowfullscreen="oallowfullscreen" 
+      webkitallowfullscreen="webkitallowfullscreen">
+    </iframe>
+   
+    
+  
+
+    <div class="controlContainer">
+      <h1></h1>
+      <div id="countryContainer">
+        <div id="StreetNoise">Choose cities</div>
+        <select id="ipd" size="5" onmousedown="this.value='';" onchange="changeCountry(this.value);">
+          <option id="newyork" value="1" >New York</option>
+          <option id="seoul" value="2">Seoul</option>
+          <option id="tokyo" value="3">Tokyo</option>
+          <option id="canada" value="4">Canada</option>
+          <option id="amsterdam" value="5">Amsterdam</option>
+          <option id="dublin" value="6">Dublin</option>
+          <option id="london" value="7">London</option>
+      </select>
+      <p></p><br>
+
+     <div id="StreetNoise">Street Noise</div> 
+      
+      <div id="volumeContainer">
+        <input id="button" class="button" onclick="return change(this)" type="button" value="Mute" id="volButton"></input>
+      </div>
+      <br>
+
+      <div id="StreetNoise">Walking Speed</div> 
+      <div id="speedContainer">
+        <input class="button" onclick="return speedfx(this)" type="button" value="1x" id="volButton"></input>
+        <input class="button" onclick="return speedfx(this)" type="button" value="1.5x" id="volButton"></input>
+        <input class="button" onclick="return speedfx(this)" type="button" value="2x" id="volButton"></input>
+      </div>
+      <br><br><br>
+
+      <div class="container">       
+              <a href="url">Video Source</a> <a href="">|</a>
+              <a href="url">Support this project</a>
+              
+     </div>
+      
+      </div>
+    </div>
+</div>
+</div>
+<div>
+
+  <script src="/js/video.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</body>
+</html>
