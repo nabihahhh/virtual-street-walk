@@ -1,16 +1,6 @@
 // 2. This code loads the IFrame Player API code asynchronously.
 var tag = document.createElement('script');
 
-window.onload 
-function randomIndex() {
-  
-  var select = document.getElementById('ipd');
-  var items = select.getElementsByTagName('option');
-  var index = Math.floor(Math.random() * items.length +1);
-  alert(index);
-  select.selectedIndex = index;
-}
-
 tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
@@ -18,42 +8,42 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 // 3. This function creates an <iframe> (and YouTube player)
 //    after the API code downloads.
 var player;
-window.onYouTubeIframeAPIReady = function(){
-  player = new YT.Player('player', {
-    videoId: '2f8Q70JZM9w',
-    events: {
-      'onReady': onPlayerReady,
-      'onStateChange': onPlayerStateChange,
-    }
-  });
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+          height: '390',
+          width: '640',
+          videoId: 'M7lc1UVf-VE',
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+      }
+
 
    // 4. The API will call this function when the video player is ready.
    function onPlayerReady(event) {
-     alert('test');
     event.target.playVideo();
-    event.target.mute();
   }
 
-  function toggleSound() {
-    if (player.isMuted()) {
-      player.unMute()
-    } else {
-      player.mute()
-  }
+  // 5. The API calls this function when the player's state changes.
+  //    The function indicates that when playing a video (state=1),
+  //    the player should play for six seconds and then stop.
+  var done = false;
+  function onPlayerStateChange(event) {
+    if (event.data == YT.PlayerState.PLAYING && !done) {
+      setTimeout(stopVideo, 6000);
+      done = true;
+    }
   }
 
-$('#button').on('click', function(){    
-          toggleSound();     
-    
-  }); 
+  function stopVideo() {
+    player.stopVideo();
+  }
 
-  
   function changeCountry(value){
 
-  
-  
   document.getElementById("newyork").onclick = function() {
-      
       //change src value
       document.getElementById('ytVideo').src = "https://www.youtube.com/embed/eZe4Q_58UTU?modestbranding=1&autoplay=1&autohide=1&controls=0&fs=0&loop=1&rel=0&showinfo=0&disablekb=1&";
       //vidsrc = "https://www.youtube.com/embed/eZe4Q_58UTU?modestbranding=1&autoplay=1&autohide=1&controls=0&fs=0&loop=1&rel=0&showinfo=0&disablekb=1&";
@@ -102,41 +92,6 @@ $('#button').on('click', function(){
     }
 
   }
-  function muteVideo() {
-    player.mute();
-  }
 
-function unmute() {
-    player.unmute();
-  }
-
-
-  $('#volButton').on('click', function change(){
-    if( $(this).hasClass('mute') ){
-      $(this).removeClass('mute');
-      $(this).text('Mute');
-      muteVideo();
-    } else {
-      $(this).addClass('mute');
-      $(this).text('Unmute');
-      ubnmuteVideo();
-    }
-
-  });
-
-  function change(el)
-  {
-
-      if ( el.value === "Mute" ){
-          el.value = "Unmute";}
-          
   
-      else {
-          el.value = "Mute";
-          player.unmute();}
 
-
-
-  }
-
-}
